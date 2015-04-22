@@ -46,6 +46,7 @@ save(datem, file = "C:/Users/Administrator/Dropbox/my project/frenchFacebook/dat
 save(date, file = "C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/allpostdatetrue.RData")
 save(dateall, file = "C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/alldate.RData")
 
+<<<<<<< HEAD
 ##################################
 
 load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/allposts.RData")
@@ -54,3 +55,5 @@ alldates = allposts$postdate
 unidate = as.vector(sort(unique(alldates)))
 mdates = match(alldates,unidate)
 save(alldates,unidate,mdates, file = "C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/postdates.RData")
+=======
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a

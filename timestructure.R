@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/ccdate.RData")
 
 
+=======
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 ###########################################
 #createallfansdate
 
@@ -86,11 +89,14 @@ sdate = irlba(L, nu = 20, nv = 20)
 save(sdate, file = "C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/svddatestructure.RData")
 
 ################################################
+<<<<<<< HEAD
 load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/svddatestructure.RData")
 load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/allfansdate.RData")
 
 ccdate=NULL
 for(i in 1:10){ccdate=c(ccdate,rep(i,5))};ccdate=c(ccdate,rep(11,3))
+=======
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 
 par(mfrow=c(1,1))
 plot(sdate$d)
@@ -109,8 +115,13 @@ dim(a)
 ap = a%*%Y%*%yy
 apn =t(apply(ap,1,function(x) return(x/sqrt(sum(x^2)))))
 
+<<<<<<< HEAD
 nclus=8
 kmap = kmeans(apn, nclus, nstart = 100)
+=======
+nclus=3
+kmap = kmeans(apn, nclus, nstart = 1000)
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 table(kmap$clust)
 
 Zhat = sparse.model.matrix(~as.factor(kmap$clust)-1)
@@ -126,7 +137,11 @@ for(i in 1:nclus)
 
 B
 par(mfrow=c(1,1))
+<<<<<<< HEAD
 balloonPlot(B,TRUE,FALSE,"main",NULL,NULL,4,1)
+=======
+balloonPlot(B)
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 #################################################################
 
 sh_fans=c(holl$fan_id,sark$fan_id)
@@ -197,6 +212,7 @@ sshdate = irlba(L, nu = 20, nv = 20)
 save(sshdate, file = "C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/svdshdatestructure.RData")
 
 ################################################
+<<<<<<< HEAD
 load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/svdshdatestructure.RData")
 load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/sh_fansdate.RData")
 
@@ -205,6 +221,8 @@ for(i in 1:7){ccshdate=c(ccshdate,rep(i,5))};
 ccshdate=c(ccshdate,rep(8,4))
 for(i in 9:10){ccshdate=c(ccshdate,rep(i,5))};
 ccshdate=c(ccshdate,rep(11,2))
+=======
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 
 par(mfrow=c(1,1))
 plot(sshdate$d)
@@ -214,7 +232,11 @@ u = sshdate$u[,1:3]
 u = t(apply(u,1,function(x) return(x/sqrt(sum(x^2)))))
 
 #########################################################
+<<<<<<< HEAD
 a=sh_fansdate
+=======
+
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 Y = model.matrix(~as.factor(ccshdate)-1)
 dim(Y)
 yy = solve(t(Y)%*%Y)
@@ -232,14 +254,23 @@ bhat = zz%*%t(Zhat)%*%a%*%Y%*%yy
 
 round(bhat*53)
 
+<<<<<<< HEAD
 B1=round(bhat[c(2,1,3),]*53)
+=======
+B1=round(bhat[c(3,2,1),]*53)
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 B=matrix(rep(0,nclus*11),nrow=nclus)
 for(i in 1:nclus)
 {B[i,]=B1[i,]}
 
 B
+<<<<<<< HEAD
 rn = c("fan_clus1","fan_clus2","fan_clus3")
 #cn = c("day 1-5","day 6-10")
 par(mfrow=c(1,1))
 balloonPlot(B,TRUE,FALSE,"time structure",NULL,rn,4,1)
+=======
+par(mfrow=c(1,1))
+balloonPlot(B)
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 

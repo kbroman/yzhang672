@@ -5,6 +5,7 @@ load('C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/allpostfans.
 load('C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/cc.RData')
 load('C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/n.RData')
 
+<<<<<<< HEAD
 A=allpostfans
 
 Y = model.matrix(~as.factor(cc)-1)
@@ -22,6 +23,8 @@ Ahat = spMatrix(nrow=92226,ncol=3239,i=c(Ahat1@i+1,Ahat2@i+50001),
 B = A-Ahat
 
 
+=======
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 #a=allpostfans
 
 #Y = model.matrix(~as.factor(cc)-1)
@@ -42,6 +45,7 @@ B = A-Ahat
 
 #save(sdelete, file = "C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/svddeletestructure.RData")
 
+<<<<<<< HEAD
 load('C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/allpostfans.RData')
 load('C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/cc.RData')
 load('C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/n.RData')
@@ -60,6 +64,42 @@ v = t(apply(v,1,function(x) return(x/sqrt(sum(x^2)))))
 
 svbd = sv_bydate(v, mdates, cc, npost, ncluster)
 vd = svbd$vd; vdl = svbd$vdl; dfvdl = svbd$dfvdl; daten = svbd$daten
+=======
+load('C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/cc.RData')
+load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/svddeletestructure.RData")
+load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/allpostdate.RData")
+load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/allpostdatetrue.RData")
+
+#sdelete
+
+par(mfrow=c(1,1))
+plot(sdelete$d)
+dim(sdelete$u)
+dim(sdelete$v)
+v = sdelete$v[,1:5]
+v = t(apply(v,1,function(x) return(x/sqrt(sum(x^2)))))
+
+u = sdelete$u[ ,1:5]
+u = t(apply(u,1,function(x) return(x/sqrt(sum(x^2)))))
+km5u = kmeans(u, centers = 5, nstart = 1000)
+
+
+
+id=1:3239
+dfvd=data.frame(v,datem,cc,id)
+dfvdo=dfvd[order(dfvd$cc,dfvd$datem),]
+dfvdo=as.matrix(dfvdo)
+vd=dfvdo[,1:5]
+
+dfvdl=dfvd[order(dfvd$datem),]
+dfvdl=as.matrix(dfvdl)
+vdl=dfvdl[,1:5]
+
+datem_od=dfvdl[,6]
+daten=rep(1,53)
+for(i in 2:53){daten[i]=sum(datem_od<=(i-1))+1}
+
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 
 par(mfrow = c(3,1), mar = rep(1,4))
 par(xpd=TRUE)
@@ -82,11 +122,31 @@ i=5;plot(vdl[,i], ylab = "", xlab="", col = dfvdl[,7])
 legend("right",   c("lepen","joly","bayrou","hollande",
                   "melenchon","dupont","sarkozy","poutou"),
        col=1:8,pch=rep(16,8))
+<<<<<<< HEAD
 for(d in 1:102) abline(v=daten[d],col="grey")
 abline(v=daten[55]);abline(v=daten[87]);abline(v=daten[101]);
 ########################################################
 
 
+=======
+for(d in 1:53) abline(v=daten[d])
+
+#npd=rep(0,max(datem))
+#for (iday in 1: max(datem))
+#{npd[iday] = length(dfvdl[which(dfvdl[,6]==iday),7])}
+#par(mfrow=c(1,1))
+#plot(npd)
+#npd
+#day 49,50,51,52,53 melenchon many posts
+#date[c(49,50,51,52,53)]
+#length(datem)
+
+
+
+########################################################
+load('F:/UWMadison/project/French candidates/previous work/fordesk00/mydata/tables.RData')
+
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 #km5 = kmeans(v, centers = 5, nstart = 1000)
 #save(km5, file = "C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/delstrkm5.RData")
 
@@ -94,6 +154,7 @@ load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/delstrkm5.RD
 
 kmcluster=km5$cluster
 
+<<<<<<< HEAD
 vv=solve(t(v)%*%v)
 Hv=v%*%vv%*%t(v)
 Hii=diag(Hv)
@@ -138,6 +199,8 @@ save(alsort, file = "C:/Users/Administrator/Dropbox/my project/frenchFacebook/da
 ######################################################################
 load('F:/UWMadison/project/French candidates/previous work/fordesk00/mydata/tables.RData')
 
+=======
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 library(XML);library(RCurl);library(devtools);library(qdap)
 library(stringr);library(tm);library(RWeka);library(wordcloud)
 
@@ -146,6 +209,12 @@ bayr = tables$bayrou;   holl = tables$hollande
 mele = tables$melenchon;dupo = tables$dupont
 sark = tables$sarkozy;  pout = tables$poutou
 
+<<<<<<< HEAD
+=======
+drop2 = function(tmp){
+  return(substr(tmp, start = 21, stop = nchar(tmp)))  
+}
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 lepe_p = as.character(lapply(lepe$parent_url,drop2))
 joly_p = as.character(lapply(joly$parent_url,drop2))
 bayr_p = as.character(lapply(bayr$parent_url,drop2))
@@ -187,7 +256,11 @@ for(i in 1:5)
   Nfc[i]=length(co_clusi)
 
   
+<<<<<<< HEAD
   #co_clusi=str_replace_all(co_clusi, "[^[:alnum:]]", " ")
+=======
+  co_clusi=str_replace_all(co_clusi, "[^[:alnum:]]", " ")
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
   co_clusi=iconv(co_clusi, "latin1", "ASCII", sub="")
   #a=bracketX(co_clusi)
   
@@ -331,7 +404,11 @@ load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/delFqtc.RDat
 
 
 ########################################################
+<<<<<<< HEAD
 id=1:npost
+=======
+
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 df=data.frame(kmcluster,cc,id)
 dfo=df[order(df$kmcluster),]
 ndfo=rep(0,5)
@@ -345,6 +422,7 @@ for (i in 1:5)
   }
 }
 #posts in clusters
+<<<<<<< HEAD
 rn=c("poclus1","poclus2","poclus3","poclus4",
      "poclus5")
 cn=c("Lepen", "Joly", "Bayrou", "Hollande", "Melenchon", "Dupont", "Sarkozy", "Poutou")
@@ -356,6 +434,15 @@ rowSums(nmatr)
 colSums(nmatr)
 par(mfrow=c(1,1))
 balloonPlot(nmatr[alsort,],TRUE, FALSE, "number of posts", cn, rn, 4,1)
+=======
+rownames(nmatr)=c("po_c1","po_c2","po_c3","po_c4",
+                  "po_c5")
+nmatr
+rowSums(nmatr)
+colSums(nmatr)
+par(mfrow=c(1,1))
+balloonPlot(nmatr)
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 
 kmucluster=km5u$cluster
 fanid=1:92226
@@ -384,7 +471,10 @@ plotcluster(v, km5$cluster)
 #choose km5
 
 load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/delstrkm5.RData")
+<<<<<<< HEAD
 load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/delclusalsort.RData")
+=======
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 
 nclus=5;ncan=8
 ns=rep(0,8); for (i in 1:8) {ns[i]=sum(n[1:i])}
@@ -399,7 +489,11 @@ rownames(bp)=c("cluster1","cluster2","cluster3","cluster4","cluster5")
 colnames(bp)=c("lepen","joly","bayrou","hollande",
                "melenchon","dupont","sarkozy","poutou")
 par(mfrow=c(1,1))
+<<<<<<< HEAD
 balloonPlot(bp[alsort,],TRUE,FALSE,"",)
+=======
+balloonPlot(bp)
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 bp
 ####################################################################
 

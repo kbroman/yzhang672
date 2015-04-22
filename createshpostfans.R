@@ -13,9 +13,43 @@ sark = tables$sarkozy
 
 sh_parent_url = c(holl$parent_url,sark$parent_url)
 
+<<<<<<< HEAD
 sh_fans=c(holl$fan_id,sark$fan_id)
 
 sh_postfans = createA(sh_fans,sh_parent_url)
+=======
+sh_uniquepost = unique(sh_parent_url)
+
+sh_fans=c(holl$fan_id,sark$fan_id)
+
+sh_uniquefan = unique(sh_fans)
+
+n=length(sh_fans)
+nf=length(sh_uniquefan)
+
+cfans=match(sh_fans,sh_uniquefan)
+cpost=match(sh_parent_url, sh_uniquepost)
+
+#allcrA = spMatrix(nrow =n , ncol = length(alluniquepost),
+#                  i = 1:n,
+#                  j = cpost, 
+#                  x = rep(1, n))
+
+sh_postfans = spMatrix(nrow =nf , ncol = length(sh_uniquepost),
+                       i = cfans,
+                       j = cpost, 
+                       x = rep(1, n))
+#dim(allcrA)
+dim(sh_postfans)
+
+# to match posts, we need to drop some text
+drop2 = function(tmp){
+  return(substr(tmp, start = 21, stop = nchar(tmp)))  
+}
+up = lapply(sh_uniquepost,drop2)
+
+colnames(sh_postfans) = up
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 #save(allcrA, file = "C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/allcrA.RData")
 save(sh_postfans, file = "C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/shpostfans.RData")
 

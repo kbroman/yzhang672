@@ -28,11 +28,20 @@ load('C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/shpostfans.R
 load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/svdshpostfan.RData")
 load('C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/shpostfans.RData')
 load('C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/n.RData')
+<<<<<<< HEAD
 load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/postdates.RData")
 
 
 par(mfrow=c(1,1))
 plot(sh_sf$d,ylab="singular values",main="svd of Hollande & Sarkozy")
+=======
+load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/allpostdate.RData")
+load("C:/Users/Administrator/Dropbox/my project/frenchFacebook/data/allpostdatetrue.RData")
+
+
+par(mfrow=c(1,1))
+plot(sh_sf$d)
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 dim(sh_sf$u)
 dim(sh_sf$v)
 v = sh_sf$v[,1:4]
@@ -48,6 +57,7 @@ h_cc=cc[(sum(n[1:3])+1):sum(n[1:4])]
 s_cc=cc[(sum(n[1:6])+1):sum(n[1:7])]
 sh_cc=c(h_cc,s_cc)
 
+<<<<<<< HEAD
 h_mdates=mdates[(sum(n[1:3])+1):sum(n[1:4])]
 s_mdates=mdates[(sum(n[1:6])+1):sum(n[1:7])]
 sh_mdates=c(h_mdates,s_mdates)
@@ -66,6 +76,26 @@ daten=rep(1,103)
 for(i in 2:103){daten[i]=sum(mdates_od<=(i-1))+1}
 
 par(mfrow = c(4,1), mar = rep(1,4))
+=======
+h_datem=datem[(sum(n[1:3])+1):sum(n[1:4])]
+s_datem=datem[(sum(n[1:6])+1):sum(n[1:7])]
+sh_datem=c(h_datem,s_datem)
+
+dfvd=data.frame(v,sh_datem,sh_cc)
+dfvdo=dfvd[order(dfvd$sh_cc,dfvd$sh_datem),]
+dfvdo=as.matrix(dfvdo)
+vd=dfvdo[,1:4]
+
+dfvdl=dfvd[order(dfvd$sh_datem),]
+dfvdl=as.matrix(dfvdl)
+vdl=dfvdl[,1:4]
+
+datem_od=dfvdl[,5]
+daten=rep(1,53)
+for(i in 2:53){daten[i]=sum(datem_od<=(i-1))+1}
+
+par(mfrow = c(4,1), oma = rep(1,4))
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 i=1; plot(vd[,i], ylab = "", xlab="", col = sh_cc,pch=16)
 legend("top",c("hollande","sarkozy"),col=c(4,7),pch=c(16,16))
 for(i in 2:4) plot(vd[,i], ylab = "", xlab="", col = sh_cc,pch=16)
@@ -79,8 +109,16 @@ i=3; plot(vdl[,i], ylab = "", xlab="", col = dfvdl[,6],pch=20)
 #for(d in 1:53) abline(v=daten[d],col="grey")
 #legend("top",c("hollande","sarkozy"),col=c(4,7),pch=c(20,20))
 i=4; plot(vdl[,i], ylab = "", xlab="", col = dfvdl[,6],pch=20)
+<<<<<<< HEAD
 for(d in 1:103) abline(v=daten[d],col="grey")
 abline(v=daten[55]);abline(v=daten[87]);abline(v=daten[101]);
+=======
+for(d in 1:53) abline(v=daten[d],col="grey")
+abline(v=daten[36])
+abline(v=daten[38])
+abline(v=daten[39])
+date[36:39]
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 
 par(mfrow = c(4,1), oma = rep(1,4))
 i=1; plot(vdl[,i], ylab = "", xlab="", col = dfvdl[,6],pch=16)

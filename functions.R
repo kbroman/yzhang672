@@ -20,7 +20,10 @@ createA <- function(x,y)
   #up = lapply(uy,drop2)
   up=uy
   colnames(A) = up
+<<<<<<< HEAD
   rownames(A) = ux
+=======
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
   return(A)
 }
 
@@ -49,6 +52,7 @@ create_fanwords <- function(A)
   fan = A %>% rownames %>% unique
   cfan = match(A %>% rownames,fan)
   nx=length(fan);ny=length(A[1,])
+<<<<<<< HEAD
   B = spMatrix(nrow = nx , ncol = ny, 
                i = cfan[A@i+1]  , j = A@j+1 , x = A@x ) 
   rownames(B) = fan
@@ -57,6 +61,25 @@ create_fanwords <- function(A)
 }
   
   
+=======
+  
+  Bi = NULL; Bj = NULL; Bx = NULL;
+  for (i in 1:nx)
+  {
+    cf = which(cfan==i); 
+    
+    ci = which(A@i %in% (cf-1)); uj = A@j[ci]; ni = length(ci);
+    Bi = c(Bi,rep(i,ni)); Bj = c(Bj, uj); Bx = c(Bx,A@x[ci])
+  }
+  
+    B = spMatrix(nrow = nx , ncol = ny, 
+                 i = Bi  , j = Bj+1 , x = Bx )  
+   
+  colnames(B)=colnames(A)
+  rownames(B)=fan
+  return(B)
+}
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
 
 combind_fanwords <- function(A1,A2)
 {
@@ -128,6 +151,7 @@ sv_bydate <- function(v , datem, cc, npost, ncluster)
 myStopwords <- c(stopwords("French"),
                  "http","www","facebook","com","le")
 
+<<<<<<< HEAD
 textclean <- function (x)
 {
   myCorpus <- x %>% VectorSource %>% Corpus
@@ -141,6 +165,15 @@ freqmatr <- function(mytdm,rname)
 {
   
   freqterm <- findFreqTerms(mytdm, lowfreq = (length(mytdm$ncol)/1000), highfreq = Inf)
+=======
+textclean <- function(x,rname)
+{
+  myCorpus <- x %>% VectorSource %>% Corpus
+  myCorpus <- myCorpus %>% tm_map(removeWords,myStopwords) %>% tm_map(removeNumbers)
+ 
+  mytdm <- myCorpus %>% TermDocumentMatrix
+  freqterm <- findFreqTerms(mytdm, lowfreq = (length(x)/1000), highfreq = Inf)
+>>>>>>> b5021e41b90ad74fbf1c3b4d4ad43ef0d4eb731a
   
   freqc <- mytdm[freqterm,]
   freqm <- spMatrix(nrow=freqc$ncol,ncol=freqc$nrow,i=freqc$j,j=freqc$i,x=freqc$v)
