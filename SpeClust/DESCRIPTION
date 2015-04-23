@@ -1,0 +1,13 @@
+Package: SpeClust
+Type: Package
+Title: Functions useful for spectral clustering project
+Version: 1.0
+Date: 2015-04-23
+Author: Yilin Zhang <yzhang672@wisc.edu>
+Maintainer: Yilin Zhang <yzhang672@wisc.edu>
+Description: This package contains functions to create adjacency matrix, 
+             combine sparse matrices, do SVD sorted by time, clean text,
+             find frequency of words, draw balloonPlot, etc. Those functions
+             are useful for spectral clustering project.
+License: MIT
+LazyData: true
