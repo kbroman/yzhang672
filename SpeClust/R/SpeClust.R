@@ -193,6 +193,8 @@ freqmatr <- function(mytdm,rname)
 #' @param namesy row names
 #' @param margin number of margin of this balloon plot
 #' @param mult number of repetition of this balloon plot
+#' @export
+#' @return a balloon Plot
 
 balloonPlot = function(M, logTran, sqrtTran, main, namesx, namesy, margin, mult){
   # M is a matrix. want to plot each element as a dot.  

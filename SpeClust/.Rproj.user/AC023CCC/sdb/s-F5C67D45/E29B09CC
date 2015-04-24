@@ -1,0 +1,16 @@
+{
+    "contents" : "Package: SpeClust\nType: Package\nTitle: Functions useful for spectral clustering project\nVersion: 1.0\nDate: 2015-04-23\nAuthor: Yilin Zhang <yzhang672@wisc.edu>\nMaintainer: Yilin Zhang <yzhang672@wisc.edu>\nDepends: R (>= 3.1.2),dplyr,irlba,RSQLite,Matrix\nDescription: This package contains functions to create adjacency matrix, \n             combine sparse matrices, do SVD sorted by time, clean text,\n             find frequency of words, draw balloonPlot, etc. Those functions\n             are useful for spectral clustering project.\nLicense: MIT\nLazyData: true\nImports:\n    dplyr,\n    irlba,\n    RSQLite,\n    Matrix\n",
+    "created" : 1429839660990.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3135701708",
+    "id" : "E29B09CC",
+    "lastKnownWriteTime" : 1429840331,
+    "path" : "~/SpeClust/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "dcf"
+}

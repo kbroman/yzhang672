@@ -1,0 +1,17 @@
+{
+    "contents" : "---\ntitle: \"SpeClust R package\"\nauthor: \"Yilin Zhang\"\noutput: html_document\n---\n\nThis R package contains functions useful for spectral clustering text analysis project.\n\n# take out substring of url\n\n```{r}\nlibrary(SpeClust)\ndrop(\"https://www.facebook.com/12345678/post/1234567\")\n```\n\n# create adjacency matrix\n\n```{r}\nx = c(\"a\",\"b\",\"c\",\"a\",\"c\",\"d\",\"f\",\"b\",\"e\",\"a\",\"g\")\ny = c(\"1\",\"5\",\"7\",\"3\",\"4\",\"2\",\"3\",\"7\",\"1\",\"2\",\"5\")\ncreateA(x,y)\n```\n\n# unique matrix rows\n\nwhen we have replicated rows, create the matrix with unique rows\n\n```{r}\nA = spMatrix(nrow = 8 , ncol = 5, \n               i = c(1,1,2,3,3,3,4,4,5,6,6,6,7,7,8,8,8),\n               j = c(2,3,4,1,2,1,5,3,1,2,5,4,3,1,2,3,5),\n               x = c(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1))\nrownames(A) = c(\"a\",\"b\",\"c\",\"a\",\"b\",\"d\",\"e\",\"a\")\ncolnames(A) = c(\"1\",\"2\",\"3\",\"4\",\"5\")\nA\ncreate_fanwords(A)\n```\n\n# combind two matrices\n\n```{r}\nA1 = spMatrix(nrow = 5 , ncol = 5, \n               i = c(1,1,2,3,3,3,4,4,5),\n               j = c(2,3,4,1,2,1,5,3,1),\n               x = c(1,1,1,1,1,1,1,1,1))\nrownames(A1) = c(\"a\",\"b\",\"c\",\"a\",\"b\")\ncolnames(A1) = c(\"1\",\"2\",\"3\",\"4\",\"5\")\n\nA2 = spMatrix(nrow = 3 , ncol = 3, \n               i = c(1,1,2,3,3,3),\n               j = c(2,3,2,1,3,1),\n               x = c(1,1,1,1,1,1))\nrownames(A2) = c(\"a\",\"b\",\"d\")\ncolnames(A2) = c(\"4\",\"5\",\"6\")\nA1;A2\ncombind_fanwords(A1,A2)\n```\n\n# SVD with normalization\n\nsvdmatrix(A)\n\n# clean text\n\ntextclean(x)\n\n# draw balloonPlot\n\n```{r}\nM = matrix(c(3,40,5,1,7,12,55,6,2,45,12,32),nrow = 3)\ncn = c(\"1\",\"2\",\"3\",\"4\")\nrn = c(\"a\",\"b\",\"c\")\nrownames(M) = rn\ncolnames(M) = cn\nballoonPlot(M, FALSE, FALSE, \"ballloonPlot of A\", cn, rn, 4, 1)\n```\n",
+    "created" : 1429839135864.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1143796916",
+    "id" : "1AB455A3",
+    "lastKnownWriteTime" : 1429841904,
+    "path" : "C:/Users/Administrator/Frenchpj/SpeClust/README.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}

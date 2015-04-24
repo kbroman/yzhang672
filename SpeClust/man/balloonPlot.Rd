@@ -23,6 +23,9 @@ balloonPlot(M, logTran, sqrtTran, main, namesx, namesy, margin, mult)
 
 \item{mult}{number of repetition of this balloon plot}
 }
+\value{
+a balloon Plot
+}
 \description{
 draw balloon plot
 }

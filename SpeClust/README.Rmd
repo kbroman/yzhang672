@@ -1,0 +1,76 @@
+---
+title: "SpeClust R package"
+author: "Yilin Zhang"
+output: html_document
+---
+
+This R package contains functions useful for spectral clustering text analysis project.
+
+# take out substring of url
+
+```{r}
+library(SpeClust)
+drop("https://www.facebook.com/12345678/post/1234567")
+```
+
+# create adjacency matrix
+
+```{r}
+x = c("a","b","c","a","c","d","f","b","e","a","g")
+y = c("1","5","7","3","4","2","3","7","1","2","5")
+createA(x,y)
+```
+
+# unique matrix rows
+
+when we have replicated rows, create the matrix with unique rows
+
+```{r}
+A = spMatrix(nrow = 8 , ncol = 5, 
+               i = c(1,1,2,3,3,3,4,4,5,6,6,6,7,7,8,8,8),
+               j = c(2,3,4,1,2,1,5,3,1,2,5,4,3,1,2,3,5),
+               x = c(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1))
+rownames(A) = c("a","b","c","a","b","d","e","a")
+colnames(A) = c("1","2","3","4","5")
+A
+create_fanwords(A)
+```
+
+# combind two matrices
+
+```{r}
+A1 = spMatrix(nrow = 5 , ncol = 5, 
+               i = c(1,1,2,3,3,3,4,4,5),
+               j = c(2,3,4,1,2,1,5,3,1),
+               x = c(1,1,1,1,1,1,1,1,1))
+rownames(A1) = c("a","b","c","a","b")
+colnames(A1) = c("1","2","3","4","5")
+
+A2 = spMatrix(nrow = 3 , ncol = 3, 
+               i = c(1,1,2,3,3,3),
+               j = c(2,3,2,1,3,1),
+               x = c(1,1,1,1,1,1))
+rownames(A2) = c("a","b","d")
+colnames(A2) = c("4","5","6")
+A1;A2
+combind_fanwords(A1,A2)
+```
+
+# SVD with normalization
+
+svdmatrix(A)
+
+# clean text
+
+textclean(x)
+
+# draw balloonPlot
+
+```{r}
+M = matrix(c(3,40,5,1,7,12,55,6,2,45,12,32),nrow = 3)
+cn = c("1","2","3","4")
+rn = c("a","b","c")
+rownames(M) = rn
+colnames(M) = cn
+balloonPlot(M, FALSE, FALSE, "ballloonPlot of A", cn, rn, 4, 1)
+```
