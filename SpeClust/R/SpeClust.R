@@ -231,4 +231,7 @@ balloonPlot = function(M, logTran, sqrtTran, main, namesx, namesy, margin, mult)
   }
 }
 
-
+#' @import dplyr
+#' @import irlba
+#' @import RSQLite
+#' @import Matrix
