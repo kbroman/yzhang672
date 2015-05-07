@@ -1,3 +1,4 @@
+
 #' take out the substring of the url of "https://www.facebook.com/123456789/posts/12345678"
 #' @param str the complete string of url
 #' @export
