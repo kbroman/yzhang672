@@ -10,13 +10,14 @@ Description: This package contains functions to create adjacency matrix,
              find frequency of words, draw balloonPlot, etc. Those functions
              are useful for spectral clustering project.
 Depends: R (>= 3.1.2)
-License: MIT
+License: MIT + file LICENSE
 LazyData: true
 Imports:
     dplyr,
     irlba,
     RSQLite,
-    Matrix
+    Matrix,
+    tm
 Suggests:
     knitr,
     devtools,

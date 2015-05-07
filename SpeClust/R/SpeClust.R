@@ -11,6 +11,7 @@ drop = function(str){
 }
 
 #' create adjacency matrix
+#' @import Matrix
 #' @param x the subjects to construct rows 
 #' @param y the subjects to construct columns
 #' @export
@@ -37,6 +38,8 @@ createA <- function(x,y)
 #' create the matrix of all users by words
 #' users are the row subjects
 #' words are the words post by users
+#' @import dplyr
+#' @import RSQLite
 #' @param A adjacency matrix of users by posts
 #' @export
 #' @return the matrix of all users by words
@@ -57,6 +60,8 @@ create_fanwords <- function(A)
 }
 
 #' combine two sparse matrix
+#' @import dplyr
+#' @import RSQLite
 #' @param A1 sparse matrix 1
 #' @param A2 sparse matrix 2
 #' @export
@@ -100,6 +105,7 @@ combind_fanwords <- function(A1,A2)
 }
 
 #' Do SVD to matrix with normalization
+#' @import irlba
 #' @param A adjacency matrix
 #' @export
 #' @return top 20 singular values and singular vectors
@@ -142,6 +148,9 @@ sv_bydate <- function(v , datem, cc, npost, ncluster)
 #' clean text
 #' remove stopwords
 #' remove numbers
+#' @import dplyr
+#' @import RSQLite
+#' @import tm
 #' @param x original text
 #' @export
 #' @return TermDocumentMatrix after cleaning
@@ -158,6 +167,9 @@ textclean <- function (x)
 }
 
 #' find frequent words in TermDocumenMatrix
+#' @import dplyr
+#' @import RSQLite
+#' @import tm
 #' @param mytdm the TermDocumentMatrix
 #' @param rname rownames of the matrix
 #' @export 
@@ -231,7 +243,4 @@ balloonPlot = function(M, logTran, sqrtTran, main, namesx, namesy, margin, mult)
   }
 }
 
-#' @import dplyr
-#' @import irlba
-#' @import RSQLite
-#' @import Matrix
+
