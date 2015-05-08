@@ -10,6 +10,7 @@ This R package contains functions useful for spectral clustering text analysis p
 
 ```{r}
 library(SpeClust)
+library(Matrix)
 drop("https://www.facebook.com/12345678/post/1234567")
 ```
 
@@ -26,6 +27,7 @@ createA(x,y)
 when we have replicated rows, create the matrix with unique rows
 
 ```{r}
+
 A = spMatrix(nrow = 8 , ncol = 5, 
                i = c(1,1,2,3,3,3,4,4,5,6,6,6,7,7,8,8,8),
                j = c(2,3,4,1,2,1,5,3,1,2,5,4,3,1,2,3,5),
