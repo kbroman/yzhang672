@@ -27,7 +27,7 @@ createA(x,y)
 when we have replicated rows, create the matrix with unique rows
 
 ```{r}
-
+library(Matrix)
 A = spMatrix(nrow = 8 , ncol = 5, 
                i = c(1,1,2,3,3,3,4,4,5,6,6,6,7,7,8,8,8),
                j = c(2,3,4,1,2,1,5,3,1,2,5,4,3,1,2,3,5),
@@ -41,6 +41,7 @@ create_fanwords(A)
 # combind two matrices
 
 ```{r}
+library(Matrix)
 A1 = spMatrix(nrow = 5 , ncol = 5, 
                i = c(1,1,2,3,3,3,4,4,5),
                j = c(2,3,4,1,2,1,5,3,1),
@@ -69,6 +70,7 @@ textclean(x)
 # draw balloonPlot
 
 ```{r}
+library(Matrix)
 M = matrix(c(3,40,5,1,7,12,55,6,2,45,12,32),nrow = 3)
 cn = c("1","2","3","4")
 rn = c("a","b","c")

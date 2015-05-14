@@ -127,8 +127,9 @@ svdmatrix <- function(A)
 #' @param cc membership vector of data (which post belongs to which candidate)
 #' @param npost number of posts
 #' @param ncluster number of clusters
+#' @param ndate number of dates
 
-sv_bydate <- function(v , datem, cc, npost, ncluster)
+sv_bydate <- function(v , datem, cc, npost, ncluster, ndate)
 {
   id=1:npost
   dfvd=data.frame(v,datem,cc,id)
@@ -157,8 +158,10 @@ sv_bydate <- function(v , datem, cc, npost, ncluster)
 #' @return TermDocumentMatrix after cleaning
 #' @keywords text clean TermDocumentMatrix
 
+
 textclean <- function (x)
 {
+  myStopwords <- NULL
   myStopwords <- c(stopwords("French"),
                    "http","www","facebook","com","le")
   myCorpus <- x %>% VectorSource %>% Corpus
@@ -178,7 +181,9 @@ textclean <- function (x)
 
 freqmatr <- function(mytdm,rname)
 {
-  
+  myStopwords <- NULL
+  myStopwords <- c(stopwords("French"),
+                   "http","www","facebook","com","le")
   freqterm <- findFreqTerms(mytdm, lowfreq = (length(mytdm$ncol)/1000), highfreq = Inf)
   
   textclean <- function(x,rname)

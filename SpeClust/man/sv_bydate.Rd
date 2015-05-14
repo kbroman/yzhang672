@@ -4,7 +4,7 @@
 \alias{sv_bydate}
 \title{do svd sorted by time}
 \usage{
-sv_bydate(v, datem, cc, npost, ncluster)
+sv_bydate(v, datem, cc, npost, ncluster, ndate)
 }
 \arguments{
 \item{v}{data to do SVD}
@@ -16,6 +16,8 @@ sv_bydate(v, datem, cc, npost, ncluster)
 \item{npost}{number of posts}
 
 \item{ncluster}{number of clusters}
+
+\item{ndate}{number of dates}
 }
 \description{
 do svd sorted by time
