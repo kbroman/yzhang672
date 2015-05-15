@@ -61,11 +61,15 @@ combind_fanwords(A1,A2)
 
 # SVD with normalization
 
+```{r}
 svdmatrix(A)
+```
 
 # clean text
 
+```{r}
 textclean(x)
+```
 
 # draw balloonPlot
 
