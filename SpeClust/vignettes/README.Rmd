@@ -63,7 +63,7 @@ combind_fanwords(A1,A2)
 
 # SVD with normalization
 
-```{r}
+```{r, eval=FALSE}
 svdmatrix(A)
 ```
 
