@@ -1,7 +1,11 @@
 ---
 title: "SpeClust R package"
 author: "Yilin Zhang"
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SpeClust R package}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8](inputenc)
 ---
 
 This R package contains functions useful for spectral clustering text analysis project.
