@@ -1,25 +1,12 @@
-
-#' take out the substring of the url of "https://www.facebook.com/123456789/posts/12345678"
-#' @param str the complete string of url
-#' @export
-#' @return the substring of url
-#' @keywords string substring
-
-
-drop = function(str){
-  sstr = substr(str, start = 25, stop = nchar(str))
-  return(sstr)  
-}
-
 #' create adjacency matrix
 #' @import Matrix
-#' @param x the subjects to construct rows 
-#' @param y the subjects to construct columns
+#' @param x the first type of nodes (citizens)
+#' @param y the second type of ndes (posts)
 #' @export
-#' @return the adjacency matrix of x and y
+#' @return the adjacency matrix of two types of nodes
 #' @keywords adjacency matrix 
 
-createA <- function(x,y)
+createAdjMat <- function(x,y)
 {
   ux = unique(x); uy = unique(y);
   n  = length(x); nx = length(ux); ny = length(uy)
@@ -36,6 +23,40 @@ createA <- function(x,y)
   return(A)
 }
 
+#' create graph laplacian
+#' @import Matrix
+#' @param AdjMat the adjacency matrix
+#' @param type the type of normalization (row, column, or both)
+#' @param regular regularization or not (True or False)
+#' @export
+#' @return the graph laplacian from the adjacency matrix
+#' @keywords graph laplacian 
+
+laplacian <- function(AdjMat,type,regular)
+{
+  rs = rowSums(AdjMat); cs = colSums(AdjMat); 
+  taur = 0; tauc = 0
+  if(regular==TRUE)
+  {taur = mean(rs); tauc = mean(cs)}
+
+    if(type=="row")
+    {
+      GraphLap = Diagonal(length(rs), 1/(rs+taur))%*%AdjMat
+    }
+    if(type=="column")
+    {    
+      GraphLap = AdjMat%*%Diagonal(length(cs), 1/(cs+tauc))
+    }
+    if(type=="both")
+    {
+      GraphLap = Diagonal(length(rs), 1/sqrt(rs+taur))%*%
+        AdjMat%*%Diagonal(length(cs), 1/sqrt(cs+tauc))
+    }
+  
+  
+  return(GraphLap)
+}
+
 #' create the matrix of all users by words
 #' users are the row subjects
 #' words are the words post by users
@@ -45,7 +66,6 @@ createA <- function(x,y)
 #' @export
 #' @return the matrix of all users by words
 #' @keywords adjacency matrix 
-
 
 create_fanwords <- function(A)
 {
